@@ -1,5 +1,5 @@
 # Xilinx Vivado script
-# Version: Vivado 2015.4
+# Version: Vivado 2016.2
 # Function:
 #   Download bitstream to FPGA
 
@@ -8,6 +8,9 @@ set device [lindex $argv 0]
 
 puts "BITSTREAM: $bit"
 puts "DEVICE: $device"
+
+# initialize ps7 with "ps7_init.tcl" created for default Hello World application.
+exec xsdk -batch ./helperscript/xsdk_script.tcl
 
 open_hw
 connect_hw_server
@@ -21,7 +24,7 @@ foreach { target } [get_hw_targets] {
             break
         }
     }
-    if { $dev == $device } {
+    if { $board != "" } {
         break
     }
     close_hw_target

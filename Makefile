@@ -141,13 +141,13 @@ vivado: $(project)
 	$(VIVADO) $(project) &
 #	$(VIVADO) $(project) -tempDir /tmp &
 
-bitstream = $(project_name)/$(project_name).runs/impl_1/chip_top.bit
+bitstream = $(project_name)/$(project_name).runs/impl_1/wrapper.bit
 bitstream: $(bitstream)
 $(bitstream): $(lowrisc_srcs)  $(lowrisc_headers) $(verilog_srcs) $(verilog_headers) | $(project)
 	$(VIVADO) -mode batch -source ../../common/script/make_bitstream.tcl -tclargs $(project_name)
 
 program: $(bitstream)
-	$(VIVADO) -mode batch -source ../../common/script/program.tcl -tclargs "xc7a100t_0" $(bitstream)
+	$(VIVADO) -mode batch -source ./helperscript/program.tcl -tclargs "xc7z020_1" $(bitstream)
 
 .PHONY: project vivado bitstream program
 
@@ -192,15 +192,15 @@ simulation: $(sim-elab)
 
 search-ramb: src/boot.bmm
 src/boot.bmm: $(bitstream)
-	$(VIVADO) -mode batch -source ../../common/script/search_ramb.tcl -tclargs $(project_name) > search-ramb.log
-	python ../../common/script/bmm_gen.py search-ramb.log src/boot.bmm 128 65536
+	$(VIVADO) -mode batch -source ./helperscript/search_ramb.tcl -tclargs $(project_name) > search-ramb.log
+	python ./helperscript/bmm_gen.py search-ramb.log src/boot.bmm 128 65536
 
-bit-update: $(project_name)/$(project_name).runs/impl_1/chip_top.new.bit
-$(project_name)/$(project_name).runs/impl_1/chip_top.new.bit: $(boot_mem) src/boot.bmm
+bit-update: $(project_name)/$(project_name).runs/impl_1/wrapper.new.bit
+$(project_name)/$(project_name).runs/impl_1/wrapper.new.bit: $(boot_mem) src/boot.bmm
 	data2mem -bm $(boot_mem) -bd $< -bt $(bitstream) -o b $@
 
-program-updated: $(project_name)/$(project_name).runs/impl_1/chip_top.new.bit
-	$(VIVADO) -mode batch -source ../../common/script/program.tcl -tclargs "xc7a100t_0" $(project_name)/$(project_name).runs/impl_1/chip_top.new.bit
+program-updated: $(project_name)/$(project_name).runs/impl_1/wrapper.new.bit
+	$(VIVADO) -mode batch -source ./helperscript/program.tcl -tclargs "xc7z020_1" $(project_name)/$(project_name).runs/impl_1/wrapper.new.bit
 
 .PHONY: search-ramb bit-update program-updated
 

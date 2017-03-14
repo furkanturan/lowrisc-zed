@@ -39,7 +39,7 @@ cd board/zed
 git checkout master
 ```
 
-Now you need to [prepare the environment as described here]({{< ref "docs/debug-v0.3/environment.md" >}})
+Now you need to [prepare the environment as described here](http://www.lowrisc.org/docs/debug-v0.3/environment/)
 
 * Set environment variables:
 
@@ -47,8 +47,8 @@ Now you need to [prepare the environment as described here]({{< ref "docs/debug-
 source set_env.sh
 ```
 
-* If you haven’t before, [compile and install RISC-V cross compiler]({{< ref "docs/untether-v0.2/riscv_compile.md" >}})
-* If you haven’t before, [install Vivado and set your environment]({{< ref "docs/untether-v0.2/xilinx.md" >}})
+* If you haven’t before, [compile and install RISC-V cross compiler](http://www.lowrisc.org/docs/untether-v0.2/riscv_compile.md)
+* If you haven’t before, [install Vivado and set your environment](http://www.lowrisc.org/docs/untether-v0.2/xilinx.md)
 
 *Note: The Zedboard port is only tested with Vivado 2016.2*
 
@@ -92,7 +92,7 @@ Above this subtitle, setting the environment, generating hardware, and programmi
 Before jumping to program RISC-V for booting Linux, prepare the SD Card with the Linux image.
 
 #### Build Linux
-Build the port of Linux kernel for the RISC-V instruction set architecture [as described here]({{< ref "docs/debug-v0.3/fpga.md" >}}):
+Build the port of Linux kernel for the RISC-V instruction set architecture [as described here](http://www.lowrisc.org/docs/debug-v0.3/fpga):
 ```
 cd $TOP/riscv-tools
 curl https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.2.tar.xz | tar -xJ
@@ -158,7 +158,7 @@ rrrrrrrrrrrrrrrrrrrrrr  rrrrrrrrrrrrrrrrrrrrrr
 # 
 ```
 
-You can continue with working on Linux by [mounting SD Card as it is described here]({{< ref "docs/debug-v0.3/fpga.md" >}}).
+You can continue with working on Linux by [mounting SD Card as it is described here](http://www.lowrisc.org/docs/debug-v0.3/fpga).
 
 ---
 

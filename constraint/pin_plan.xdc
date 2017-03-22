@@ -17,17 +17,20 @@ set_property PACKAGE_PIN W8 [get_ports SPI_SCLK]
 # ----------------------------------------------------------------------------
 # JC Pmod - Bank 13
 # ----------------------------------------------------------------------------
+
+# PMOD RS232
+
 set_property PACKAGE_PIN AB6 [get_ports UART_CTS]
 set_property PACKAGE_PIN AB7 [get_ports UART_RTS]
 set_property PACKAGE_PIN AA4 [get_ports UART_TX]
 set_property PACKAGE_PIN Y4 [get_ports UART_RX]
-#set_property PACKAGE_PIN T6  [get_ports {JC3_N}];  # "JC3_N"
-#set_property PACKAGE_PIN R6  [get_ports {JC3_P}];  # "JC3_P"
-#set_property PACKAGE_PIN U4  [get_ports {JC4_N}];  # "JC4_N"
-#set_property PACKAGE_PIN T4  [get_ports {JC4_P}];  # "JC4_P"
 
-#set_property IOSTANDARD LVCMOS33 [get_ports {UART_RX}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {UART_TX}]
+# PMOD USBUART
+
+#set_property PACKAGE_PIN AB6 [get_ports UART_TX]
+#set_property PACKAGE_PIN AB7 [get_ports UART_CTS]
+#set_property PACKAGE_PIN AA4 [get_ports UART_RTS]
+#set_property PACKAGE_PIN Y4 [get_ports UART_RX]
 
 set_property IOSTANDARD LVCMOS33 [get_ports -of_objects [get_iobanks 13]]
 

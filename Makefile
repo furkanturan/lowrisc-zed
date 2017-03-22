@@ -43,6 +43,7 @@ lowrisc_headers = \
 
 verilog_srcs = \
 	$(osd_dir)/interfaces/common/dii_channel.sv \
+	$(proj_dir)/src/Wrapper.v \
 	$(base_dir)/src/main/verilog/chip_top.sv \
 	$(base_dir)/src/main/verilog/spi_wrapper.sv \
 	$(base_dir)/socip/nasti/channel.sv \
@@ -90,6 +91,13 @@ verilog_srcs = \
 	$(glip_dir)/backend_uart/logic/verilog/glip_uart_receive.v \
 	$(glip_dir)/backend_uart/logic/verilog/glip_uart_toplevel.v \
 	$(glip_dir)/backend_uart/logic/verilog/glip_uart_transmit.v \
+	$(glip_dir)/common/logic/credit/verilog/debtor.v \
+	$(glip_dir)/common/logic/credit/verilog/creditor.v \
+	$(glip_dir)/common/logic/scaler/verilog/glip_downscale.v \
+	$(glip_dir)/common/logic/scaler/verilog/glip_upscale.v \
+	$(glip_dir)/common/logic/fifo/verilog/oh_fifo_sync.v \
+	$(glip_dir)/common/logic/fifo/verilog/oh_memory_ram.v \
+	$(glip_dir)/common/logic/fifo/verilog/oh_memory_dp.v \
 
 verilog_headers = \
 	$(base_dir)/src/main/verilog/config.vh \

@@ -19,18 +19,10 @@ A great outcome of this port is one board with two systems on same chip; one of 
 
 ## The Tutorial on Working with Zedboard
 ### Preparation
-Get the lowRISC development environment with *update* branch. (Zedboard extensions are provided for debug-v0.3 branch, but have not merged to that branch yet.)
+Get the lowRISC development environment.
 ```
-git clone -b update https://github.com/lowrisc/lowrisc-chip.git
+git clone -b debug-v0.3 --recursive https://github.com/lowrisc/lowrisc-chip.git
 cd lowrisc-chip
-git submodule update --init --recursive
-```
-
-Make sure you are working with debug-zedboard branch of fpga submodule.
-```
-cd fpga
-git checkout debug-zedboard
-git submodule update --init --recursive
 ```
 
 Now you need to [prepare the environment as described here](http://www.lowrisc.org/docs/debug-v0.3/environment/)

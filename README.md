@@ -4,7 +4,7 @@ Zedboard is versatile development board utilising Zynq SoC. It has been used in 
 Compared to the other RISC-V implementations, lowRISC's achievement of offering an untethered RISC-V implementation is great; however, made the design leave the Zynq devices initially. However, with the implementation described in this page, the Zedboard support is added again. Zedboard’s SD Card and UART ports are connected directly to ARM; therefore, the port of lowRISC to Zedboard requires obtaining two low-cost PMOD modules to provide RISC-V with dedicated IO, and continue working untethered. 
 
 * For SD Card: [Pmod SD](http://store.digilentinc.com/pmod-sd-full-sized-sd-card-slot/)
-* For UART: [Pmod RS232](http://store.digilentinc.com/pmod-usbuart-usb-to-uart-interface/) or [Pmod USBUART](http://store.digilentinc.com/pmod-usbuart-usb-to-uart-interface/)
+* For UART: [Pmod RS232](http://store.digilentinc.com/pmod-rs232-serial-converter-and-interface-standard/) or [Pmod USBUART](http://store.digilentinc.com/pmod-usbuart-usb-to-uart-interface/)
 
 Together with the PMODs, the board looks like it is in the image below:
 
@@ -33,24 +33,17 @@ git checkout debug-zedboard
 git submodule update --init --recursive
 ```
 
-Make sure you are working with master branch of lowrisc-zed submodule.
-```
-cd board/zed
-git checkout master
-```
-
 Now you need to [prepare the environment as described here](http://www.lowrisc.org/docs/debug-v0.3/environment/)
+
+* If you haven’t before, [compile and install RISC-V cross compiler](http://www.lowrisc.org/docs/untether-v0.2/riscv_compile.md)
+* If you haven’t before, [install Vivado and set your environment](http://www.lowrisc.org/docs/untether-v0.2/xilinx.md) *Note: The Zedboard port is implemented with Vivado 2016.2*
 
 * Set environment variables:
 
 ```
+export FPGA_BOARD=zed
 source set_env.sh
 ```
-
-* If you haven’t before, [compile and install RISC-V cross compiler](http://www.lowrisc.org/docs/untether-v0.2/riscv_compile.md)
-* If you haven’t before, [install Vivado and set your environment](http://www.lowrisc.org/docs/untether-v0.2/xilinx.md)
-
-*Note: The Zedboard port is only tested with Vivado 2016.2*
 
 ### Implement the FPGA Project
 Go to the Zedboard submodule.
@@ -58,7 +51,7 @@ Go to the Zedboard submodule.
 cd $TOP/fpga/board/zed
 ```
 
-Before continuing, make sure you have the correct pin mapping of your PMODs connections in the `$TOP/fpga/board/zed/constraint/pin_plan.xdc` file. In the default configuration (of above image), PMOD SD is connected to JB headers of Zedboard and PMOD RS232 is connected to (upper pins of) JC.
+Before continuing, make sure that you have the correct pin mapping of your PMOD connections in the `$TOP/fpga/board/zed/constraint/pin_plan.xdc` file. In the default configuration (above image), PMOD SD is connected to JB headers of the Zedboard, and PMOD RS232 is connected to the (upper pins of) JC headers. If PMOD USBUART is preferred, as it is not pin-to-pin compatible with the RS232, comment the RS232 mapping lines on the `pin_plan.xdc` file, and uncomment the lines for USBUART.
 
 As the work environment is ready, you can work with *make* targets:
 

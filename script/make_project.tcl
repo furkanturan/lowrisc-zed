@@ -46,7 +46,7 @@ source $origin_dir/script/zed_bd.tcl
 # Set 'sources_1' fileset object
 set files [list \
                [file normalize $origin_dir/src/Wrapper.v] \
-               [file normalize $origin_dir/generated-src/Top.$CONFIG.v] \
+               [file normalize $origin_dir/generated-src/Top.$CONFIG.sv] \
                [file normalize $osd_dir/interfaces/common/dii_channel.sv ] \
                [file normalize $base_dir/src/main/verilog/chip_top.sv] \
                [file normalize $base_dir/src/main/verilog/spi_wrapper.sv] \
